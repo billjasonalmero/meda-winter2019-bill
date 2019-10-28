@@ -15,7 +15,13 @@ if(terminalText[3] == undefined  || terminalText[3] == "none") {
 if (terminalText[3] != "red" || terminalText[3] != "green") {
   console.log("sorry that is not a [rper color value. we have defaulted you a transparent background");
   terminalText[3] == "transparent";
+  valid = false;
 }
+
+if(valid ==false) {
+  return;
+}
+
 
 
 var htmlStyle = `
