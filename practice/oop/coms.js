@@ -1,5 +1,4 @@
 var billLibrary = require("./library.js");
-
 var avengers = require("./library2.js");
 
 
@@ -11,8 +10,8 @@ console.log(results);
 
 
 //avengers --> library2.js
-var results = avengers.letter();
-console.log(results);
+var alfa = avengers.letter();
+console.log(alfa);
 
 var sum = avengers.spiderman(5,3);
 console.log(sum);
