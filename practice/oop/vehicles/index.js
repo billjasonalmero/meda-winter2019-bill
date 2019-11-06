@@ -6,6 +6,8 @@ console.log(honda);
 
 honda.travel(100);
 
+honda.refuel(2);
+
 
 //nov5, 2019
 //week 3 day 11

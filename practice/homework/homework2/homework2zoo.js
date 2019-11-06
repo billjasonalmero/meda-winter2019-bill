@@ -32,7 +32,7 @@ class Mammal extends Animal {
     //GETTER get the value of something
     //SETTER set the value of something
     get type() {
-        let mutated = this.type + "-man";
+        let mutated = this.type + "BearPig";
         return mutated;
     }
 
@@ -62,31 +62,4 @@ class Mammal extends Animal {
 }
 console.log("homework 2: " + Mammal.type);
 
-const firstMammal = new Mammal("dog", 4, 1, 1, 2, 1, true, 2, 30, 24, 4);
-
-
-firstMammal.sleep();
-firstMammal.eat();
-
-let secondMammal = firstMammal.reproduce(4, 6);
-
-console.log(secondMammal.heightInches);
-console.log(firstMammal, secondMammal);
-
-
-// Cat Mammal
-let firstCatMammal = new Mammal("cat", 4, 1, 1, 2, 1, true, 8, 15, 10, 10);
-
-let litter = new Array();
-
-litter.push(firstCatMammal.reproduce(1, 2));
-litter.push(firstCatMammal.reproduce(1, 2));
-litter.push(firstCatMammal.reproduce(1, 3));
-
-console.log(litter);
-
-
-let tilapia = new Fish(true);
-
-console.log(tilapia.metabolism);
 
