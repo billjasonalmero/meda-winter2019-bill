@@ -13,13 +13,19 @@ let vehicle = class Vehicle {
     console.log("New Vehicle has created");
   }
 
-  getVIN () {
-    return VIN;
+  speak() {
+    console.log("This is a vehicle object");
   }
 }
 
-module.exports = vehicle;
+module.exports = Vehicle;
 
+
+function myFunction (arg1) {
+  console.log(arg1,);
+}
+
+myFunction("1", "Really Important Data");
 
 //nov5, 2019
 //week 3 day 11

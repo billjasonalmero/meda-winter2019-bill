@@ -20,7 +20,7 @@ const Car = class Car extends Vehicle {
         console.log("The " + this.make + " " + this.model + " has " + this.currentFuel.toFixed(1) + " gallons of the " + this.engineType + " left.");
       }else {
         console.log("This " + this.make + " " + this.model + "doesn't have enough fuel to travel that far.")
-        refuel(1)
+        this.refuel(1)
       }
 
     }else {
@@ -55,9 +55,11 @@ const Car = class Car extends Vehicle {
         }
       }
     }
+  }
 
 
-
+  speak() {
+    console.log("This is a car object");
   }
 }
 
