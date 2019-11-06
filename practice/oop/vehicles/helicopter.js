@@ -17,3 +17,7 @@ const Helicopter = class Helicopter extends Vehicle {
 }
 
 module.exports = Helicopter;
+
+
+//nov 6, 2019
+//week 3 day 12

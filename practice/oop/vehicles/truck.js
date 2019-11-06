@@ -16,8 +16,8 @@ const Truck = class Truck extends Vehicle {
     }else{
       console.log("Yes, the " + this.model + "can carry" + tons + "tons");
     }
+    return  this.capacity >= true;
   }
-  return this.capacity; >= true;
 
 
 }

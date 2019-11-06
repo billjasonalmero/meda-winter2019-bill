@@ -1,4 +1,4 @@
-let vehicle = class Vehicle {
+let Vehicle = class Vehicle {
   constructor(make, model, year, color, owner, engineType, topSpeed, maxSpeed) {
     //list of what all vehicles have
     this.make = make;

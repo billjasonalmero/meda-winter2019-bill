@@ -1,0 +1,1 @@
+{"make":"Generic","model":"Company","year":1960,"color":"transparent","owner":"User","engineType":"gas","topSpeed":186,"license":9803953,"mileage":107008,"tankSize":35,"currentFuel":35,"MPG":39}
