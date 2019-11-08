@@ -23,8 +23,16 @@ console.log("The express server is running on port " + port + "!")
 app.use("/client", express.static("./web_files"));
 //app.use("/profile", express.static("user/") );
 
-app.use("/specialfile", express.static("../../../../Git Repositories/meda/pracrice"))
+app.use("/specialfile", express.static("../../../../Git Repositories/meda/pracrice"));
 
-app.use("/myproject", express.static("../../../../meda-fall2019-bill/projects/portfolio/websitebill"))
+app.use("/myproject", express.static("../../../../meda-fall2019-bill/projects/portfolio/websitebill"));
 
 //https://localhost:8080/client --> Gets sent to  --> web_files folder
+
+//test
+//test2
+
+
+
+//nov 7 2019
+//Week 3 Day 13
