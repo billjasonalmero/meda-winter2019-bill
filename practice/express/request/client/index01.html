@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script></head>
+  <style>
+    body {
+      background-color: lavenderblush;
+    }
+  </style>
+<body>
+  <p>I Live</p>
+  <script>
+    $(document).ready(() => {
+      //let data = "Hello There"; //alert("jQuery is working");
+      let data = {
+        message: "Hello There"
+      };
+
+      //Sends a post request to the URL described. Arguments in order: URL, data, Callback function.
+      $.post("http://localhost:3000/updateData", data, (dataFromServer) => {
+        console.log("The server has responded");
+        console.log(dataFromServer);
+      });
+    });
+  </script>
+
+</body>
+</html>
