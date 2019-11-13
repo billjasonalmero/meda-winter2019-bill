@@ -17,13 +17,13 @@
     $(document).ready(() => {
       //let data = "Hello There"; //alert("jQuery is working");
       let data = {
-        firstName: "Bill Jason",
-        lastName: "Almero"
-      }
+        message: "Hello There"
+      };
 
       //Sends a post request to the URL described. Arguments in order: URL, data, Callback function.
-      $.post("http://localhost:3000/updateData", data, () => {
-        console.log("The server has responded!");
+      $.post("http://localhost:3000/updateData", data, (dataFromServer) => {
+        console.log("The server has responded");
+        console.log(dataFromServer);
       });
     });
   </script>
