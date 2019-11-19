@@ -17,37 +17,55 @@
     </style>
 </head>
 <body>
-    
-    <h1>Comment Submission Form</h1>
-    <h2>Instructions</h2>
-    <ol>
-        <li>Fill in the form.</li>
-        <li>Press the Submit button.</li>
-    </ol>
-    <form id="commentSubmission">
-        <label for="fname">First Name</label><br />
-        <input name="fname" id="fname" type="text" /><br />
-        <label for="lname">Last Name</label><br />
-        <input name="lname" id="lname" type="text" /><br />
-        <label for="email">eMail</label> <!-- eBook --><br />
-        <input name="email" id="email" type="email" /><br />
-        <label for="age">Age</label><br />
-        <input name="age" id="age" type="number" /><br />
-        <label for="comment">Your Comments</label><br />
-        <textarea cols="80" rows="20" id="comment"></textarea><br />
-    </form>
+    <!-- comment section -->
+    <div id="comments-section">
+        <h1>Comments Section</h1>
+        <ul id="comments">
+            
+        </ul>
+    </div>
+    <!-- /comement section -->
 
-    <input form="commentSubmission" type="reset" value="Reset" />
-    <button id="submit">Submit</button>
+    <!-- comment submission -->
+    <div id="comment-submission">
+        <h1>Comment Submission Form</h1>
+        <h2>Instructions</h2>
+        <ol>
+            <li>Fill in the form.</li>
+            <li>Press the Submit button.</li>
+        </ol>
+        <!-- form for accepting comments. Needs sanitation on front and back -->
+        <form id="commentSubmission">
+            <label for="fname">First Name</label><br />
+            <input name="fname" id="fname" type="text" /><br />
+            <label for="lname">Last Name</label><br />
+            <input name="lname" id="lname" type="text" /><br />
+            <label for="email">eMail</label> <!-- eBook --><br />
+            <input name="email" id="email" type="email" /><br />
+            <label for="age">Age</label><br />
+            <input name="age" id="age" type="number" /><br />
+            <label for="comment">Your Comments</label><br />
+            <textarea cols="80" rows="20" id="comment"></textarea><br />
+        </form>
+        
+        <input form="commentSubmission" type="reset" value="Reset" />
+        <button id="submit">Submit</button>
+    </div>
+    <!-- /the comment submission  -->
     
 
     <script>
+        //all code that RUNS must be written in the document ready function.
         $(document).ready(() => {
 
+            //attached a listener to the submit button...
             $("#submit").click(() => {
                 // This listens to the "Submit" button, and the user presses on it to confirm they are done and would like to submit to the server.
                 
+                //Add timestamp in the future by using:
+                //Sata.prototype.toLocalDateString:
 
+                //Build the object that we will send to the back end. Agree with the backend on how this object must be formatted
                 let data = {
                     message: $("#comment").val(),
                     firstName: $("#fname").val(),
@@ -57,12 +75,22 @@
                 };
             
                 // Sends a post request to the URL described. Arguments in order: URL, data, Callback Function.
-                $.post("http://localhost:3000/submitComment", data, (dataFromServer) => {
-                    console.log("The server has responded");
+                $.post("http://localhost:3000/submitComment", data, () => {
+                    console.log("The server has responded!");
 
-                    $.post("http://localhost:3000/loadComments", {},(commentsReceived) => {
-                        console.log(commentsReceived);
-                    })
+                    $.post("http://localhost:3000/loadComments", {}, (commentsReceived) => {
+                        // console.log(commentsReceived.commentsArray[1].firstname);
+
+                        let cArray = comments.Received.commentsArray;
+
+                        for (let i = 0; i < cArray.length; i++) {
+                            let commentString = "<li>" + cArray[i].message + " - " + cArray[i].firstName + "</li>";
+                            $("#comments").append(commentString);
+                            // let commentString =  commentsReceived.commentsArray[i].message + "- " + commentsReceived.commentsArray[i].firtstName;
+                            // $("#comments").append(commentString);
+                        }
+
+                    });
                 });
 
 

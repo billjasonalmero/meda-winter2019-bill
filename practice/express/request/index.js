@@ -84,7 +84,7 @@ app.post("/submitComment", (request, response) => {
 app.post("/loadComments", (request,response) => {
 
   //Check if the JSON file exist...
-  if (fs.existsSync(filename) {
+  if (fs.existsSync(filename)) {
 
     //...if it exist then read it...
     let comments = fs.readFileSync(filename, "utf8");
@@ -99,5 +99,5 @@ app.post("/loadComments", (request,response) => {
     response.sendStatus(500); //displays to the user that there was an issue to the server (500 is an error status)
   }
 
-})
+});
 

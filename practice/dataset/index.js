@@ -34,6 +34,7 @@ for (let i = 0; i < dataArray.length -1; i++) {
   if(pass === true) {
     //console.log("The line entry " + i + " is from the year 2018!");
     total++;
+    //grab current line and add it to JSON object array
     json2018Data.data.push(dataArray[i]);
   //If we encounter an issue, tell us about it.
   }else if(pass === 1) {
