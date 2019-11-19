@@ -1,0 +1,14 @@
+{
+  "name": "dataset",
+  "version": "1.0.0",
+  "description": "practicing dataset in javascript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Bill",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.17.15"
+  }
+}
