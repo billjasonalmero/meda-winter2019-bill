@@ -44,7 +44,8 @@ let practiceSchema = new Schema({
 
 let practiceModel  = new mongoose.model("myfirstCollections", practiceSchema);
                                         //collectionName
-
+/*
+//CREATE
 let newEntry = new practiceModel ({
   note: "This is my second note on the database",
   old: true,
@@ -58,3 +59,22 @@ newEntry.save((error) => {
     console.log("We saved the data");
   }
 });
+ */
+
+//READ
+//An object with a criteria to search the database with.
+let searchCriteria = {
+  old: true
+};
+
+//Actuallt search the database
+ practiceModel.find(searchCriteria,(error, results) => {
+   //If error, then...
+   if(error) {
+     //...Tell us about it
+     console.log("Something went wrong!" + error);
+   }else {
+     //Otherwise console log the entries found
+     console.log(results);
+   }
+ })
