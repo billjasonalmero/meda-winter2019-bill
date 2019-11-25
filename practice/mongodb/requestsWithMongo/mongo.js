@@ -39,7 +39,8 @@ let Schema = mongoose.Schema;
 let practiceSchema = new Schema({
   note: String, 
   old: Boolean,
-  timesUpdated: Number
+  timesUpdated: Number,
+  city: String
 });
 
 let practiceModel  = new mongoose.model("myfirstCollections", practiceSchema);
@@ -67,7 +68,7 @@ let searchCriteria = {
   old: true
 };
 
-//Actuallt search the database
+//Actually search the database
  practiceModel.find(searchCriteria,(error, results) => {
    //If error, then...
    if(error) {
@@ -78,3 +79,26 @@ let searchCriteria = {
      console.log(results);
    }
  })
+
+let dataToUpdate = {
+  old: true,
+  city: "San Francisco"
+};
+
+ //UPDATE
+ practiceModel.findByIdAndUpdate("5ddc1e4b055dba9d603fc5e8", dataToUpdate, (error, results) => {
+   if (error){
+     console.log("Something happened" + error)
+   }else  {
+     console.log(results)
+   }
+ });
+
+//FINDBYID AND DELETE
+practiceModel.findByIdAndDelete("5ddc22052305f19e07822049", (error, results) => {
+   if(error) {
+     console.log("Something did Something?" + error)
+   }else {
+     console.log(results)
+   }
+});
