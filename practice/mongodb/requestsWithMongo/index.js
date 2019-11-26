@@ -2,6 +2,8 @@
 const fs = require("fs");
 // Includes into our code, the Express.js, provided by NPM.
 const express = require("express");
+//Includes into our code, the Mongoose.js package.
+const mongoose = mongoose("mongoose");
 // Includes into our code Body Parser, comes with Express.js
 const bodyParser = require("body-parser");
 // Create an Express.js server object.
@@ -12,6 +14,46 @@ const http = require("http").Server(app);
 const port = 3000;
 // We pass the port variable to the listen function for the HTTP server.
 http.listen(port);
+
+const dbConnect = "mongodb+srv://practiceUser:123456abcdef@cluster0-u833i.mongodb.net/commmentsproject?retryWrites=true&w=majority";
+
+//Additonal options when connecting to MongoDB.
+const options = {
+    useNewUrlParser: true,
+    useFIndModify: false,
+    useUnifiedTopology: true
+};
+
+mongoose.connect(dbConnect, options, (error) => {
+    //                              callback
+    if (error) {
+        console.log(error);
+    }else{
+        console.log("Sucessfully connected to MongoDB Atlas!")
+    }
+
+});
+
+//Link up MongoDB errors with the console, and link up the definition of Promises to Mongoose
+let db = mongoose.connection;
+db.on("error", console.error.bind(console, "MongoDB error"))
+
+mongoose.Promise = global.Promise;
+
+//Building MongoDB Schema
+let Schema = mongoose.Schema;
+let commentsSchema = new Schema ({
+    message: String,
+    firstName: String,
+    lastName: String,
+    email: String,
+    age: Number,
+    timestamp: Date
+})
+
+//Create a model for the comments collection using the comments Schema.
+let commentsModel = new mongoose.model("comments", commentsSchema)
+
 
 // Signifying the Developer that Express.js is now running.
 console.log("Express server running on port " + port);
@@ -43,6 +85,9 @@ app.post("/submitComment", (request, response) => {
     // let text = objectFromRequest.message;
     // console.log("We recieved a request for/submitComment: " + text);
 
+
+    objectFromRequest.age = parseInt(objectFromRequest.age);
+    objectFromRequest.timestamp = newDate();
 
     // If the file exists do...
     if (fs.existsSync(filename)) {
