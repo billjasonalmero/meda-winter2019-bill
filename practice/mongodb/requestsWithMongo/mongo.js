@@ -80,12 +80,15 @@ let searchCriteria = {
    }
  })
 
+ //UPDATE
+
+ //Data to update the targeted entry with the right id.
 let dataToUpdate = {
   old: true,
   city: "San Francisco"
 };
 
- //UPDATE
+//Submit the request to MongoDB with the proper id and data to update 
  practiceModel.findByIdAndUpdate("5ddc1e4b055dba9d603fc5e8", dataToUpdate, (error, results) => {
    if (error){
      console.log("Something happened" + error)
@@ -102,3 +105,8 @@ practiceModel.findByIdAndDelete("5ddc22052305f19e07822049", (error, results) => 
      console.log(results)
    }
 });
+
+//DELETE
+
+//First Argument is the id of the entry to delete, second argument is the callback function that runs when mongDB reponds with success or failure.
+practiceModel.findByIdAndDelete("234234", () => {})
