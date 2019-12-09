@@ -19,7 +19,7 @@ console.log(dataArray.length);
 // Counter for the amount of 2018 entries we found
 let total = 0;
 
-let json2018Data = {
+let json2017Data = {
   headings: headings,
   data: []
 }
@@ -28,14 +28,14 @@ let json2018Data = {
 for (let i = 0; i < dataArray.length -1; i++) {
 
   //Test the entry using the  is2018 function
-  let pass = is2018(dataArray[i]);
+  let pass = is2017(dataArray[i]);
 
   //If pass is true, then add a 1 to counter.
   if(pass === true) {
     //console.log("The line entry " + i + " is from the year 2018!");
     total++;
     //grab current line and add it to JSON object array
-    json2018Data.data.push(dataArray[i]);
+    json2017Data.data.push(dataArray[i]);
   //If we encounter an issue, tell us about it.
   }else if(pass === 1) {
     console.log("The line " + (i + 1) + "has issues! please check.");
@@ -48,9 +48,9 @@ for (let i = 0; i < dataArray.length -1; i++) {
 //Finally console log
 //console.log(json2018Data);
 
-let  jsonString = JSON.stringify(json2018Data); //to convert to json
+let  jsonString = JSON.stringify(json2017Data); //to convert to json
 
-fs.writeFileSync("2018entries.json",jsonString ,"utf8");
+fs.writeFileSync("2017entries.json",jsonString ,"utf8");
 console.log("File was Written");
 
 
@@ -65,7 +65,7 @@ console.log("File was Written");
 
 
 //This accepts a string only, returns true, false, or 1 if issue
-function is2018 (entry) {
+function is2017 (entry) {
 
   //Create an array that splits up the individual columns of the entry.
   const singleEntryArray = entry.split(",");
@@ -73,7 +73,7 @@ function is2018 (entry) {
   const entryDate =  singleEntryArray[5].split("/");
 
   //Using the array with the individual dat eparts, check the year index and to 2018
-  if("2018" == entryDate[2]) {
+  if("2017" == entryDate[2]) {
     //If it is 2018, return true
     return true;
   }else if (undefined === entryDate[2]) {

@@ -89,6 +89,15 @@ app.post("/submitComment", (request, response) => {
     objectFromRequest.age = parseInt(objectFromRequest.age);
     objectFromRequest.timestamp = newDate();
 
+    let newComment = new commentsModel(objectFromRequest);
+    newComment.save((error) => {
+        if(error) {
+            console.log(error);
+        }else {
+            console.log("Saved a new comment to the database!");
+        }
+    });
+
     // If the file exists do...
     if (fs.existsSync(filename)) {
         // ...read the file and store the contents in the variable comments...
@@ -122,8 +131,17 @@ app.post("/submitComment", (request, response) => {
     response.sendStatus(200);
 });
 
+
 // A second HTTP Post Handler called /loadComments
 app.post("/loadComments", (request, response) => {
+
+    commentsModel.find({}, (error, results) => {
+        if(error) {
+            console.log(error);
+        }else {
+
+        }
+    });
 
     // Check if the JSON file exists...
     if (fs.existsSync(filename)) {
